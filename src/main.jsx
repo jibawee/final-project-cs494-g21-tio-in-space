@@ -10,7 +10,7 @@ import Forecast from './routes/Forecast'
 import Watchlist from './routes/Watchlist'
 import Settings from './routes/Settings'
 
-import './index.css'
+//import './index.css'
 
 const router = createBrowserRouter([
     {

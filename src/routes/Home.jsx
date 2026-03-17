@@ -35,6 +35,45 @@ export default function Home() {
     return (
         <div>
             Home
+
+            <>
+                <h1>
+                   {/*today's date  */} Today's date
+                </h1>
+                <p>
+                    Asteroids near earth:
+                </p>
+                <p>
+                    {/*Number */}
+                </p>
+            </>
+
+            <>
+                <h1>
+                    Nearest Today
+                </h1>
+                <img>
+                    {/*Image of generic asteroid (see figma) */}
+                </img>
+
+                <p>
+                    {/*Get nearest asteroid.title
+                    */}
+                </p>
+                <p>
+                    Dist: {/* asteroid.distance_in_km */} km
+                </p>
+            </>
+
+            <>
+                <h1>
+                    Today's Near Earth Asteroids:
+                </h1>
+
+                <li>
+                    {/*To map things */}
+                </li>
+            </>
         </div>
     )
 }
