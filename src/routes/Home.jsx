@@ -6,7 +6,6 @@ export function homeLoader({ params, request }) {
 }
 
 export default function Home() {
-
     const resultData = useLoaderData()
     let neoData;
     let today;

@@ -5,12 +5,12 @@ import { RouterProvider } from 'react-router/dom'
 
 import Root from './routes/Root'
 import Home, { homeLoader } from './routes/Home'
-import Asteroid from './routes/Asteroid'
+import Asteroid, { asteroidLoader } from './routes/Asteroid'
 import Forecast from './routes/Forecast'
 import Watchlist from './routes/Watchlist'
 import Settings from './routes/Settings'
 
-//import './index.css'
+import './index.css'
 
 const router = createBrowserRouter([
     {
@@ -25,6 +25,7 @@ const router = createBrowserRouter([
             { 
               path: "asteroid",
               Component: Asteroid,
+              loader: asteroidLoader,
               children: [
                 {
                   path: ":id",
