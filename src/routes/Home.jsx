@@ -42,12 +42,11 @@ export default function Home() {
                 flex min-w-1/3 flex-col
             ">
                 <div className="
-                border-2 border-white 
-                p-2 m-2
+
                 ">
 
 
-                    <div>
+                    <div className="border-2 border-white min-h-1/3 p-2 m-2">
                         <h1>
                         {(new Date()).toLocaleDateString()}
                         </h1>
@@ -63,6 +62,8 @@ export default function Home() {
                         font-bold
                         bg-black
                         p-2
+                        h-2/3
+                        border-2 border-white p-2 m-2
                     ">
                         <h1 className="inline">
                             Nearest Today
