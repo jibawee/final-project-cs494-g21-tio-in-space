@@ -22,7 +22,7 @@ export default function Home() {
             let closeData = a.close_approach_data.find(e => e.close_approach_date == today)
             return ({
                 id: a.id,
-                name: a.name,
+                name: a.name.substring(1,a.name.length-1),
                 isHazardous: a.is_potentially_hazardous_asteroid,
                 distance: Number(inMetric ? closeData.miss_distance.kilometers : closeData.miss_distance.miles).toFixed(2), // to use unit setting
                 distanceUnit: inMetric ? "km" : " miles",
