@@ -1,15 +1,18 @@
 import { useLoaderData } from "react-router"
 
+import AsteroidItem from "../components/AsteroidItem"
+
 export function homeLoader({ params, request }) {
     const today = (new Date()).toISOString().substring(0,10)
     return fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${today}&end_date=${today}&api_key=${import.meta.env.VITE_KEY}`)
 }
 
 export default function Home() {
-
     const resultData = useLoaderData()
     let neoData;
     let today;
+    let units = window.localStorage.getItem("units") ?? "metric"
+    let inMetric = units == "metric"
     if (resultData && resultData.near_earth_objects) {
         today = Object.keys(resultData.near_earth_objects)[0]
         neoData = resultData.near_earth_objects[today]
@@ -21,16 +24,16 @@ export default function Home() {
                 id: a.id,
                 name: a.name,
                 isHazardous: a.is_potentially_hazardous_asteroid,
-                distance: closeData.miss_distance.kilometers, // to use unit setting
-                distanceUnit: "km",
-                speed: closeData.relative_velocity.kilometers_per_hour,
-                speedUnit: "kph",
-                diameterMax: a.estimated_diameter.meters.estimated_diameter_max ,
-                diameterMaxUnit: "m",
+                distance: Number(inMetric ? closeData.miss_distance.kilometers : closeData.miss_distance.miles).toFixed(2), // to use unit setting
+                distanceUnit: inMetric ? "km" : " miles",
+                speed: Number(inMetric ? closeData.relative_velocity.kilometers_per_hour : closeData.relative_velocity.miles_per_hour).toFixed(2),
+                speedUnit: inMetric ? "kph" : "mph",
+                diameterMax: Number(inMetric ? a.estimated_diameter.meters.estimated_diameter_max : a.estimated_diameter.feet.estimated_diameter_max).toFixed(2),
+                diameterMaxUnit: "ft",
             })
         })
     }
-    console.log(neoData)
+    neoData.sort((a, b) => a.distance - b.distance)
 
     return (
         <div>
@@ -38,13 +41,13 @@ export default function Home() {
 
             <>
                 <h1>
-                   {/*today's date  */} Today's date
+                   {(new Date()).toLocaleDateString()}
                 </h1>
                 <p>
                     Asteroids near earth:
                 </p>
                 <p>
-                    {/*Number */}
+                    {neoData.length}
                 </p>
             </>
 
@@ -52,16 +55,13 @@ export default function Home() {
                 <h1>
                     Nearest Today
                 </h1>
-                <img>
-                    {/*Image of generic asteroid (see figma) */}
-                </img>
+                <img src=""/>
 
                 <p>
-                    {/*Get nearest asteroid.title
-                    */}
+                    {neoData && neoData[0].name}
                 </p>
                 <p>
-                    Dist: {/* asteroid.distance_in_km */} km
+                    Dist: {neoData && (neoData[0].distance + neoData[0].distanceUnit)}
                 </p>
             </>
 
@@ -70,9 +70,13 @@ export default function Home() {
                     Today's Near Earth Asteroids:
                 </h1>
 
-                <li>
-                    {/*To map things */}
-                </li>
+                <ul>
+                    {neoData && neoData.map(asteroid => (
+                        <AsteroidItem key={asteroid.id} asteroid={asteroid}/>
+                    ))}
+                </ul>
+
+
             </>
         </div>
     )
