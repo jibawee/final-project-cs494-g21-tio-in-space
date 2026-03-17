@@ -1,7 +1,6 @@
 import { useLoaderData } from "react-router"
 
 import AsteroidItem from "../components/AsteroidItem"
-import Asteroid from "./Asteroid"
 
 export function homeLoader({ params, request }) {
     const today = (new Date()).toISOString().substring(0,10)
@@ -23,7 +22,7 @@ export default function Home() {
                 id: a.id,
                 name: a.name,
                 isHazardous: a.is_potentially_hazardous_asteroid,
-                distance: closeData.miss_distance.kilometers, // to use unit setting
+                distance: Number(closeData.miss_distance.kilometers).toFixed(2), // to use unit setting
                 distanceUnit: "km",
                 speed: closeData.relative_velocity.kilometers_per_hour,
                 speedUnit: "kph",
@@ -32,6 +31,7 @@ export default function Home() {
             })
         })
     }
+    neoData.sort((a, b) => a.distance - b.distance)
     console.log(neoData)
 
     return (
@@ -40,13 +40,13 @@ export default function Home() {
 
             <>
                 <h1>
-                   {/*today's date  */} Today's date
+                   {(new Date()).toLocaleDateString()}
                 </h1>
                 <p>
                     Asteroids near earth:
                 </p>
                 <p>
-                    {/*Number */}
+                    {neoData.length}
                 </p>
             </>
 
@@ -54,16 +54,13 @@ export default function Home() {
                 <h1>
                     Nearest Today
                 </h1>
-                <img>
-                    {/*Image of generic asteroid (see figma) */}
-                </img>
+                <img src=""/>
 
                 <p>
-                    {/*Get nearest asteroid.title
-                    */}
+                    {neoData && neoData[0].name}
                 </p>
                 <p>
-                    Dist: {/* asteroid.distance_in_km */} km
+                    Dist: {neoData && (neoData[0].distance + neoData[0].distanceUnit)}
                 </p>
             </>
 
@@ -72,11 +69,11 @@ export default function Home() {
                     Today's Near Earth Asteroids:
                 </h1>
 
-                <li>
-                    {/*To map things */}
-                </li>
-
-                <AsteroidItem asteroid={neoData && neoData[0]} />
+                <ul>
+                    {neoData && neoData.map(asteroid => (
+                        <AsteroidItem key={asteroid.id} asteroid={asteroid}/>
+                    ))}
+                </ul>
 
 
             </>
