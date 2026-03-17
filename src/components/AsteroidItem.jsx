@@ -1,14 +1,5 @@
 export default function AsteroidItem({ asteroid }) {
-    // asteroid has:
-    // id
-    // name
-    // isHazardous
-    // distance
-    // distanceUnit
-    // speed
-    // speedUnit
-    // diameterMax
-    // diameterMaxUnit
+    // asteroid is retrieved from neoData.map() in Home.jsx
 
     return (
         <>

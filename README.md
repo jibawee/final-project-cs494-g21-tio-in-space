@@ -61,22 +61,27 @@ The app with have 5 pages
 
 # Division of Labor statement
 
+Active and yet undivided:
+- (not started) Watchlist
+- (not started) Date range
+
 Ian will:
 
-- Build Tailwind structure (Tea will perfect the design)
-- Add on to API calls if needed
-- If needed, Redux watchlist (reassess after Assignment 4 is due)
+- (near done) Build Tailwind structure and add relevant responsive styling (Tea will perfect the design)
+    - (in progress) asteroid item among others need responsive styling
+- (might deprecate) Add on to API calls if needed
+- (might deprecate) If needed, Redux watchlist (reassess after Assignment 4 is due)
 
 Tea will
 
 - Design/Styling
-  - Figma for UI planning
-  - Perfect the Tailwind for CSS implementation based on Figma
+  - (done) Figma for UI planning
+  - (in progress) Perfect the Tailwind for CSS implementation based on Figma / Add open source animations
 
 Owen will
 
-- Make API calls and map
-- Manage local storage
+- (near done) Map API calls to our needed data from them and map
+- (in progress) Manage local storage
 
 ## This is base react, vite, and react compiler (I got rid of a lot of files)
 

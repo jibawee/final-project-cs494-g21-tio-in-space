@@ -1,8 +1,5 @@
 export default function Settings() {
 
-    const unit_systems = ["imperial", "metric"]
-    const themes = ["light", "dark"]
-
     return (
         <div>
             Settings
