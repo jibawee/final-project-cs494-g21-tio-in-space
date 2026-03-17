@@ -47,7 +47,7 @@ export default function Home() {
                 ">
 
 
-                    <div className="border-2 border-white min-h-1/3 p-2 m-2">
+                    <div className="border-2 border-white min-h-1/3 h-32 p-2 m-2">
                         <h1>
                         {(new Date()).toLocaleDateString()}
                         </h1>
@@ -67,9 +67,8 @@ export default function Home() {
 
                     <div className="
                         font-bold
-                        bg-black
                         p-2
-                        h-2/3
+                        h-70
                         border-2 border-white p-2 m-2
                     ">
                         <h1 className="inline">
@@ -89,10 +88,12 @@ export default function Home() {
 
             </div>
 
-            <div className="min-w-2/3 float-right">
+            <div className="min-w-2/3  float-right ">
                 <div className="
                     border-2 border-white 
-                    p-2 m-2
+                    p-2 m-2 
+                    overflow-y-auto
+                    h-108
                 ">
                     <h1 className="text-3xl">
                         Today's Near Earth Asteroids:
