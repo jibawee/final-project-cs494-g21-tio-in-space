@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter } from 'react-router'
 import { RouterProvider } from 'react-router/dom'
 
+import Root from './routes/Root'
 import Home, { homeLoader } from './routes/Home'
 import Asteroid from './routes/Asteroid'
 import Forecast from './routes/Forecast'
