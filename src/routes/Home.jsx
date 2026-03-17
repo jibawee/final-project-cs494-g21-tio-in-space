@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router"
+import CountUp from '../components/CountUp'
 
 import AsteroidItem from "../components/AsteroidItem"
 
@@ -53,9 +54,15 @@ export default function Home() {
                         <p>
                             Asteroids near earth:
                         </p>
-                        <p>
-                            {neoData.length}
-                        </p>
+                            <CountUp
+                            from={0}
+                            to={neoData.length}
+                            separator=","
+                            direction="up"
+                            duration={1}
+                            className="count-up-text"
+                            startCounting={false}
+                            />
                     </div>
 
                     <div className="
