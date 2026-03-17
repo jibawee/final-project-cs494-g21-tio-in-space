@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter } from 'react-router'
 import { RouterProvider } from 'react-router/dom'
 
-import Home, { homeLoader } from './routes/Home'
+//, { homeLoader }
+import Home from './routes/Home'
 import Asteroid from './routes/Asteroid'
 import Forecast from './routes/Forecast'
 import Watchlist from './routes/Watchlist'
 import Settings from './routes/Settings'
+import Root from './routes/Root'
 
 import './index.css'
 
@@ -19,7 +21,7 @@ const router = createBrowserRouter([
             { 
               index: true,
               Component: Home,
-              loader: homeLoader
+              //loader: homeLoader
             },
             { 
               path: "asteroid",
