@@ -8,7 +8,14 @@ export default function Settings() {
             Settings
 
             <h1>Units</h1>
-
+            <button onClick={() => {
+                    window.localStorage.setItem("units", "imperial")
+                    console.log("imperial")
+                }} >Set to imperial</button>
+            <button onClick={() => {
+                    window.localStorage.setItem("units", "metric")
+                    console.log("metric")
+                }} >Set to metric</button>
 
             <h1>Theme</h1>
         </div>
