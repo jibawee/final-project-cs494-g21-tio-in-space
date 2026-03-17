@@ -36,48 +36,68 @@ export default function Home() {
     neoData.sort((a, b) => a.distance - b.distance)
 
     return (
-        <div>
-            Home
+        <div className="flex">
 
-            <>
-                <h1>
-                   {(new Date()).toLocaleDateString()}
-                </h1>
-                <p>
-                    Asteroids near earth:
-                </p>
-                <p>
-                    {neoData.length}
-                </p>
-            </>
-
-            <>
-                <h1>
-                    Nearest Today
-                </h1>
-                <img src=""/>
-
-                <p>
-                    {neoData && neoData[0].name}
-                </p>
-                <p>
-                    Dist: {neoData && (neoData[0].distance + neoData[0].distanceUnit)}
-                </p>
-            </>
-
-            <>
-                <h1>
-                    Today's Near Earth Asteroids:
-                </h1>
-
-                <ul>
-                    {neoData && neoData.map(asteroid => (
-                        <AsteroidItem key={asteroid.id} asteroid={asteroid}/>
-                    ))}
-                </ul>
+            <div className="
+                flex min-w-1/3 flex-col
+            ">
+                <div className="
+                border-2 border-white 
+                p-2 m-2
+                ">
 
 
-            </>
+                    <div>
+                        <h1>
+                        {(new Date()).toLocaleDateString()}
+                        </h1>
+                        <p>
+                            Asteroids near earth:
+                        </p>
+                        <p>
+                            {neoData.length}
+                        </p>
+                    </div>
+
+                    <div className="
+                        font-bold
+                        bg-black
+                        p-2
+                    ">
+                        <h1 className="inline">
+                            Nearest Today
+                        </h1>
+                        <img src="../src/icons/asteroid_icon.png" className="w-6 h-6 inline"/>
+
+                        <p>
+                            {neoData && neoData[0].name}
+                        </p>
+                        <p className="font-normal">
+                            Dist: {neoData && (neoData[0].distance + neoData[0].distanceUnit)}
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div className="min-w-2/3 float-right">
+                <div className="
+                    border-2 border-white 
+                    p-2 m-2
+                ">
+                    <h1 className="text-3xl">
+                        Today's Near Earth Asteroids:
+                    </h1>
+
+                    <ul className="">
+                        {neoData && neoData.map(asteroid => (
+                            <AsteroidItem key={asteroid.id} asteroid={asteroid}/>
+                        ))}
+                    </ul>
+                </div>
+
+            </div>
         </div>
     )
 }
