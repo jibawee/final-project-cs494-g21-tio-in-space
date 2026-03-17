@@ -11,6 +11,8 @@ export default function Home() {
     const resultData = useLoaderData()
     let neoData;
     let today;
+    let units = window.localStorage.getItem("units") ?? "metric"
+    let inMetric = units == "metric"
     if (resultData && resultData.near_earth_objects) {
         today = Object.keys(resultData.near_earth_objects)[0]
         neoData = resultData.near_earth_objects[today]
@@ -22,17 +24,16 @@ export default function Home() {
                 id: a.id,
                 name: a.name,
                 isHazardous: a.is_potentially_hazardous_asteroid,
-                distance: Number(closeData.miss_distance.kilometers).toFixed(2), // to use unit setting
-                distanceUnit: "km",
-                speed: closeData.relative_velocity.kilometers_per_hour,
-                speedUnit: "kph",
-                diameterMax: a.estimated_diameter.meters.estimated_diameter_max ,
-                diameterMaxUnit: "m",
+                distance: Number(inMetric ? closeData.miss_distance.kilometers : closeData.miss_distance.miles).toFixed(2), // to use unit setting
+                distanceUnit: inMetric ? "km" : " miles",
+                speed: Number(inMetric ? closeData.relative_velocity.kilometers_per_hour : closeData.relative_velocity.miles_per_hour).toFixed(2),
+                speedUnit: inMetric ? "kph" : "mph",
+                diameterMax: Number(inMetric ? a.estimated_diameter.meters.estimated_diameter_max : a.estimated_diameter.feet.estimated_diameter_max).toFixed(2),
+                diameterMaxUnit: "ft",
             })
         })
     }
     neoData.sort((a, b) => a.distance - b.distance)
-    console.log(neoData)
 
     return (
         <div>

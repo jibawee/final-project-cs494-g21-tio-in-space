@@ -7,8 +7,13 @@ export function asteroidLoader({ params, request }) {
 export default function Asteroid() {
 
     const neoData = useLoaderData()
-    console.log(neoData)
+    let units = window.localStorage.getItem("units") ?? "metric"
+    let inMetric = units == "metric"
 
+    function convertAu(au) {
+        return inMetric ? au * 149597870.7 : au * 92955807.273026
+    }
+    
     return (
         <div>
             Asteroid
@@ -21,7 +26,7 @@ export default function Asteroid() {
             </p>
 
             <p>
-                Diameter: {neoData.estimated_diameter.meters.estimated_diameter_min.toFixed(2) + " - " + neoData.estimated_diameter.meters.estimated_diameter_max.toFixed(2) + "m"}
+                Diameter: {neoData.estimated_diameter[inMetric ? "meters" : "feet"].estimated_diameter_min.toFixed(2) + " - " + neoData.estimated_diameter[inMetric ? "meters" : "feet"].estimated_diameter_max.toFixed(2) + (inMetric ? "m" : "ft")}
             </p>
 
             <br></br>
@@ -35,11 +40,11 @@ export default function Asteroid() {
             </p>
 
             <p>
-                Orbit Perihelion: {Number(neoData.orbital_data.perihelion_distance).toFixed(2) + " au"}
+                Orbit Perihelion: {convertAu(Number(neoData.orbital_data.perihelion_distance)).toFixed(2) + (inMetric ? "km" : " miles")}
             </p>
 
             <p>
-                Orbit Aphelion: {Number(neoData.orbital_data.aphelion_distance).toFixed(2) + " au"}
+                Orbit Aphelion: {convertAu(Number(neoData.orbital_data.aphelion_distance)).toFixed(2) + (inMetric ? "km" : " miles")}
             </p>
 
             <br></br>
