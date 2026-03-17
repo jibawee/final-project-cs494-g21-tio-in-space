@@ -1,6 +1,6 @@
 export default function Watchlist() {
 
-    user_watchlist_items = {}
+    let user_watchlist_items = {}
 
     return (
         <div>
