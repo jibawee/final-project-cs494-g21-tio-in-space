@@ -20,7 +20,7 @@ export default function Root() {
             </div>
 
             <nav className="relative z-10 w-full bg-black bg-opacity-80 border-b border-white">
-                <ul className="flex items-center justify-between px-3 py-3">
+                <ul className="flex items-center justify-between px-3 py-3 text-2xl">
                     
                     <li>
                         <NavLink to="/" className="flex items-center gap-2 text-white">
