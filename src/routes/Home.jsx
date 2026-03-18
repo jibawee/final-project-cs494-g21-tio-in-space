@@ -68,11 +68,11 @@ export default function Home() {
                         p-2
                         h-70
                         border-2 border-white p-2 m-2
-                        flex flex-col space-y-6
+                        flex flex-col space-y-4
                         text-center
                     ">
                         <div>
-                            <h1 className="text-xl">
+                            <h1 className="text-xl pb-2">
                                 Nearest Today
                             </h1>
                         </div>
