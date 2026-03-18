@@ -25,7 +25,7 @@ export default function Home() {
                 id: a.id,
                 name: a.name.substring(1,a.name.length-1),
                 isHazardous: a.is_potentially_hazardous_asteroid,
-                distance: Number(inMetric ? closeData.miss_distance.kilometers : closeData.miss_distance.miles).toFixed(2), // to use unit setting
+                distance: Number(inMetric ? closeData.miss_distance.kilometers : closeData.miss_distance.miles).toLocaleString('en-US', {maximumFractionDigits: 2}), // to use unit setting
                 distanceUnit: inMetric ? "km" : " miles",
                 speed: Number(inMetric ? closeData.relative_velocity.kilometers_per_hour : closeData.relative_velocity.miles_per_hour).toFixed(2),
                 speedUnit: inMetric ? "kph" : "mph",
@@ -38,54 +38,59 @@ export default function Home() {
 
     return (
         <div className="flex">
-
             <div className="
-                flex min-w-1/3 flex-col
-            ">
-                <div className="
+                flex min-w-1/3 flex-col">
+                <div>
 
-                ">
-
-
-                    <div className="border-2 border-white min-h-1/3 h-32 p-2 m-2">
-                        <h1>
+                    <div className="border-2 border-white min-h-1/3 h-32 p-2 m-2 text-center space-y-2 pt-4">
+                        <h1 className="font-bold text-xl pt-1">
                         {(new Date()).toLocaleDateString()}
                         </h1>
-                        <p>
-                            Asteroids near earth:
-                        </p>
-                            <CountUp
-                            from={0}
-                            to={neoData.length}
-                            separator=","
-                            direction="up"
-                            duration={1}
-                            className="count-up-text"
-                            startCounting={false}
-                            />
+                        <div>
+                                <CountUp
+                                from={0}
+                                to={neoData.length}
+                                separator=","
+                                direction="up"
+                                duration={1}
+                                className="count-up-text"
+                                startCounting={false}
+                                />
+                                <p>
+                                Asteroids Ahoy!
+                                </p>
+                        </div>    
                     </div>
 
                     <div className="
+                        pt-4
                         font-bold
                         p-2
                         h-70
                         border-2 border-white p-2 m-2
+                        flex flex-col space-y-6
+                        text-center
                     ">
-                        <h1 className="inline">
-                            Nearest Today
-                        </h1>
-                        <img src="../src/icons/asteroid_icon.png" className="w-6 h-6 inline"/>
-
-                        <p>
-                            {neoData && neoData[0].name}
-                        </p>
-                        <p className="font-normal">
-                            Dist: {neoData && (neoData[0].distance + neoData[0].distanceUnit)}
-                        </p>
+                        <div>
+                            <h1 className="text-xl">
+                                Nearest Today
+                            </h1>
+                        </div>
+                        <div>
+                           <img src="../src/icons/asteroid_flying.png" className="w-14 h-14 inline pb-2"/> 
+                           <p className="text-lg">{neoData && neoData[0].name}</p>
+                        </div>
+                        <div>
+                            <p className="font-normal">
+                            Distance:
+                            </p>
+                            <p className="font-normal">
+                            {neoData && (neoData[0].distance)} 
+                            </p>
+                            <p className="font-normal">{neoData[0].distanceUnit} away</p>
+                        </div>
                     </div>
-
                 </div>
-
             </div>
 
             <div className="min-w-2/3  float-right ">
@@ -93,9 +98,10 @@ export default function Home() {
                     border-2 border-white 
                     p-2 m-2 
                     overflow-y-auto
+                    text-center
                     h-108
                 ">
-                    <h1 className="text-3xl">
+                    <h1 className="text-2xl">
                         Today's Near Earth Asteroids:
                     </h1>
 
