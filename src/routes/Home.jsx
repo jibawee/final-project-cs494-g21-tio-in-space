@@ -20,10 +20,14 @@ export default function Home() {
     }
     if (neoData) {
         neoData = neoData.map((a) => {
+            let aName = a.name
+            if (a.name[0] == "(") { // if the format's (xyz), do (xyz) => xyz as normal. Sometimes they do "ABC (xyz)" As the name. And Just leave those the same. ( bars)
+                aName = aName.substring(1,a.name.length-1)
+            }
             let closeData = a.close_approach_data.find(e => e.close_approach_date == today)
             return ({
                 id: a.id,
-                name: a.name.substring(1,a.name.length-1),
+                name: aName,
                 isHazardous: a.is_potentially_hazardous_asteroid,
                 distance: Number(inMetric ? closeData.miss_distance.kilometers : closeData.miss_distance.miles).toLocaleString('en-US', {maximumFractionDigits: 2}), // to use unit setting
                 distanceUnit: inMetric ? "km" : " miles",

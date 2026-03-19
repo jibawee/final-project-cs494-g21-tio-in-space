@@ -38,7 +38,7 @@ export default function AsteroidItem({ asteroid }) {
             </p>
 
 
-            {asteroid.isHazardous ? (
+            {!asteroid.isHazardous ? (
                 <div className="w-6 h-6" />  // placeholder keeps distance in same spot
             ) : (
                 <img className="w-6 h-6" src="../src/icons/hazard_icon.png" />
