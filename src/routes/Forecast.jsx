@@ -17,7 +17,7 @@ export function forecastLoader({ params, request }) {
     if (!start) {
         const today = new Date()
         start = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().substring(0,10)
-        return redirect(`${start}`)
+        throw redirect(`${start}`)
     }
     let end = formatDate(getEndDate(start))
     return fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${start}&end_date=${end}&api_key=${import.meta.env.VITE_KEY}`)
