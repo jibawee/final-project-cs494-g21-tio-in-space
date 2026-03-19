@@ -34,7 +34,7 @@ export default function Watchlist() {
                 id: a.id,
                 name: aName,
                 isHazardous: a.is_potentially_hazardous_asteroid,
-                distance: Number(inMetric ? closeData.miss_distance.kilometers : closeData.miss_distance.miles).toLocaleString('en-US', {maximumFractionDigits: 2}),
+                distance: Number(inMetric ? closeData.miss_distance.kilometers : closeData.miss_distance.miles),
                 distanceUnit: inMetric ? "km" : " miles",
                 speed: Number(inMetric ? closeData.relative_velocity.kilometers_per_hour : closeData.relative_velocity.miles_per_hour).toFixed(2),
                 speedUnit: inMetric ? "kph" : "mph",
