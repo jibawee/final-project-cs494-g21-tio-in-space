@@ -4,7 +4,8 @@ import CountUp from '../components/CountUp'
 import AsteroidItem from "../components/AsteroidItem"
 
 export function homeLoader({ params, request }) {
-    const today = (new Date()).toISOString().substring(0,10)
+    const todayDate = new Date()
+    const today = new Date(todayDate.getTime() - todayDate.getTimezoneOffset() * 60000).toISOString().substring(0,10)
     return fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${today}&end_date=${today}&api_key=${import.meta.env.VITE_KEY}`)
 }
 
