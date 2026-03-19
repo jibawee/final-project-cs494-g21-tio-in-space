@@ -38,8 +38,8 @@ export default function Home() {
                 diameterMaxUnit: "ft",
             })
         })
+        neoData.sort((a, b) => a.distance - b.distance)
     }
-    neoData.sort((a, b) => a.distance - b.distance)
 
     return (
         <div className="flex">
@@ -54,7 +54,7 @@ export default function Home() {
                         <div>
                                 <CountUp
                                 from={0}
-                                to={neoData.length}
+                                to={neoData != undefined ? neoData.length : 0}
                                 separator=","
                                 direction="up"
                                 duration={1}
@@ -90,9 +90,9 @@ export default function Home() {
                             Distance:
                             </p>
                             <p className="font-normal">
-                            {neoData && (neoData[0].distance)} 
+                            {neoData && (neoData && neoData[0].distance)} 
                             </p>
-                            <p className="font-normal">{neoData[0].distanceUnit} away</p>
+                            <p className="font-normal">{neoData && neoData[0].distanceUnit} away</p>
                         </div>
                     </div>
                 </div>
