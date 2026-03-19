@@ -8,13 +8,10 @@ export default function Settings() {
             <div className="
                 border-1 border-white
             ">
-                <h1 className="
-                    text-center text-2xl bg-gray-700 
-                    py-2
-                    border-b-1 border-white
-                ">Modify Default Units</h1>
+                <h1 className="settings-label">Modify Default Units</h1>
 
-                <div className="flex justify-evenly max-w-1/4">
+                <div className="flex gap-x-5 justify-evenly
+                mx-8">
                     <button 
                         className="settings-btn"
                         onClick={() => {
@@ -32,14 +29,13 @@ export default function Settings() {
                 </div>
             </div>
 
-            <div className="border-1 border-white">
-                <h1 className="
-                    text-center text-2xl bg-gray-700 
-                    py-2
-                    border-b-1 border-white"
+            <div className="border-1 border-white 
+            ">
+                <h1 className="settings-label"
                 >Modify Theme</h1>
 
-                <div className="flex justify-evenly max-w-1/4">
+                <div className="flex gap-x-5 justify-evenly
+                    mx-8">
                     <button 
                         className="settings-btn"
                         onClick={() => {
