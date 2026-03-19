@@ -18,7 +18,9 @@ export default function Asteroid() {
         <div>
             Asteroid
             <p>
-                Name: {neoData.name.substring(1,neoData.name.length-1)}
+                Name: {
+                    (neoData.name[0] == "(") ? neoData.name.substring(1,neoData.name.length-1) : neoData.name
+                }
             </p>
 
             <p>
