@@ -54,12 +54,12 @@ export default function Watchlist() {
                 scale={0.5}
                 ringCount={10}
                 spokeCount={10}
-                ringThickness={0.07}
-                spokeThickness={0.01}
+                ringThickness={0.01}
+                spokeThickness={0.001}
                 sweepSpeed={1.9}
                 sweepWidth={2}
                 sweepLobes={1}
-                color="#8b0000"
+                color="#008b17"
                 backgroundColor="#000000"
                 falloff={0.5}
                 brightness={1.1}
@@ -69,7 +69,7 @@ export default function Watchlist() {
                 </div>
             
          <div className=" relative z-30 p-4">
-            <h1 className="text-3xl text-center pb-2">My Watchlist</h1>
+            <h1 className="text-3xl text-center pb-2">My Radar</h1>
                 <ul className="">
                     {neoData && neoData.map(asteroid => (
                         <AsteroidItem key={asteroid.id} asteroid={asteroid}/>
