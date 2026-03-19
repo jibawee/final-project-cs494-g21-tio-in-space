@@ -61,22 +61,21 @@ The app with have 5 pages
 
 # Division of Labor statement
 
-Active and yet undivided:
-- (not started) Watchlist
-- (not started) Date range
+Split amongst:
+- (done) watch list
+- (done) date range
 
 Ian will:
 
-- (near done) Build Tailwind structure and add relevant responsive styling (Tea will perfect the design)
-    - (in progress) asteroid item among others need responsive styling
-- (might deprecate) Add on to API calls if needed
-- (might deprecate) If needed, Redux watchlist (reassess after Assignment 4 is due)
+- (done) Build Tailwind structure and add relevant responsive styling (Tea will perfect the design)
+    - (done)) asteroid item among others need responsive styling
+- Add on to API calls if needed
 
 Tea will
 
 - Design/Styling
   - (done) Figma for UI planning
-  - (in progress) Perfect the Tailwind for CSS implementation based on Figma / Add open source animations
+  - (done) Perfect the Tailwind for CSS implementation based on Figma / Add open source animations
 
 Owen will
 
