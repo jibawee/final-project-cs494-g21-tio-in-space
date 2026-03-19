@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router"
 import AsteroidItem from "../components/AsteroidItem"
+import Radar from '../components/Radar';
 
 export function watchlistLoader({ params, request }) {
     const watchlistItems = JSON.parse(window.localStorage.getItem("watchlist") ?? "[]")
@@ -45,16 +46,39 @@ export default function Watchlist() {
     console.log(neoData)
 
     return (
-        <div>
+    <>
+        <div className="relative min-h-screen z-0">
+            <div className="fixed inset-0 pointer-events-none top-21">
+                <Radar
+                speed={0.5}
+                scale={0.5}
+                ringCount={10}
+                spokeCount={10}
+                ringThickness={0.07}
+                spokeThickness={0.01}
+                sweepSpeed={1.9}
+                sweepWidth={2}
+                sweepLobes={1}
+                color="#8b0000"
+                backgroundColor="#000000"
+                falloff={0.5}
+                brightness={1.1}
+                enableMouseInteraction={false}
+                mouseInfluence={0.1}
+                />
+                </div>
+            
+         <div className=" relative z-30">
             Watchlist
 
-            <>
+
                 <ul className="">
                     {neoData && neoData.map(asteroid => (
                         <AsteroidItem key={asteroid.id} asteroid={asteroid}/>
                     ))}
                 </ul>
-            </>
         </div>
+        </div>
+    </>
     )
 }

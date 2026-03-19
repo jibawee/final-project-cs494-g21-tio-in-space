@@ -61,31 +61,31 @@ export default function Forecast() {
     console.log(neoData)
 
     return (
-        <>
-            <div className="mb-2">
-                <h1 className="text-3xl font-bold m-4 text-center">Forecast</h1>
-                <div className="flex items-center justify-center mb-4 text-xl">
-                    <input className="font-bold" type="date" value={start} onChange={(e) => navigate(`/forecast/${e.target.value}`)} />
-                    <p>{`to ${end.toLocaleDateString()}`}</p>
-                </div>
-            </div>
-
-
-            <div className="flex justify-center h-screen ">
-                    <div className="h-full w-2/3 overflow-y-auto ">
-                        {neoData && Object.entries(neoData)
-                        .sort(([a], [b]) => a.localeCompare(b))
-                        .map(([date, asteroids]) => (
-                            <details key={date} className="mb-2 open:overflow-y-auto border-2 border-white open:max-h-100">
-                            <summary className="text-lg cursor-pointer sticky top-0 bg-black">{date}</summary>
-                            {asteroids.map(asteroid => (
-                                <AsteroidItem key={asteroid.id} asteroid={asteroid} />
-                            ))}
-                            </details>
-                        ))
-                        }
+        <div>
+                <div className="mb-2">
+                    <h1 className="text-3xl font-bold m-4 text-center">Forecast</h1>
+                    <div className="flex items-center justify-center mb-4 text-xl">
+                        <input className="font-bold" type="date" value={start} onChange={(e) => navigate(`/forecast/${e.target.value}`)} />
+                        <p>{`to ${end.toLocaleDateString()}`}</p>
                     </div>
                 </div>
-        </>
+
+
+                <div className="flex justify-center h-screen ">
+                        <div className="h-full w-2/3 overflow-y-auto ">
+                            {neoData && Object.entries(neoData)
+                            .sort(([a], [b]) => a.localeCompare(b))
+                            .map(([date, asteroids]) => (
+                                <details key={date} className="mb-2 open:overflow-y-auto border-2 border-white open:max-h-100">
+                                <summary className="text-lg cursor-pointer sticky top-0 bg-black">{date}</summary>
+                                {asteroids.map(asteroid => (
+                                    <AsteroidItem key={asteroid.id} asteroid={asteroid} />
+                                ))}
+                                </details>
+                            ))
+                            }
+                        </div>
+                    </div>
+            </div>
     )
 }
