@@ -17,7 +17,7 @@ export function forecastLoader({ params, request }) {
     if (!start) {
         const today = new Date()
         start = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().substring(0,10)
-        throw redirect(`${start}`)
+        throw redirect(`/forecast/${start}`)
     }
     let end = formatDate(getEndDate(start))
     return fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${start}&end_date=${end}&api_key=${import.meta.env.VITE_KEY}`)
@@ -61,29 +61,33 @@ export default function Forecast() {
     console.log(neoData)
 
     return (
-        <div>
-            Forecast
+        <>
+            <div className="mb-2">
+                <h1 className="text-3xl font-bold m-4 text-center">Forecast</h1>
+                <div className="flex items-center justify-center gap-2 text-xl">
+                    <input className="font-bold" type="date" value={start} onChange={(e) => navigate(`/forecast/${e.target.value}`)} />
+                    <p>{`to ${end.toLocaleDateString()}`}</p>
+                </div>
+            </div>
 
-            <>
-                <input type="date" value={start} onChange={(e) => {
-                    navigate(e.target.value)
-                }}/>
-                <p>{`to ${end.toLocaleDateString()}`}</p>
-            </>
 
-            <>
-                {neoData && Object.entries(neoData)
-                    .sort(([a], [b]) => a.localeCompare(b))
-                    .map(([date, asteroids]) => (
-                        <div key={date}>
-                            <h3>{date}</h3>
+            <div className="flex flex-col h-screen p-4 gap-4">
+                <div className="overflow-y-auto flex-1">
+                    <div className="columns-1 gap-4">
+                        {neoData && Object.entries(neoData)
+                        .sort(([a], [b]) => a.localeCompare(b))
+                        .map(([date, asteroids]) => (
+                            <details key={date} className="break-inside-avoid mb-4 border-2 border-white p-2">
+                            <summary className="font-bold text-lg cursor-pointer p-1">{date}</summary>
                             {asteroids.map(asteroid => (
-                                <AsteroidItem key={asteroid.id} asteroid={asteroid}/>
+                                <AsteroidItem key={asteroid.id} asteroid={asteroid} />
                             ))}
-                        </div>
-                    ))
-                }
-            </>
-        </div>
+                            </details>
+                        ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }

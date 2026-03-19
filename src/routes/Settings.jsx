@@ -28,7 +28,7 @@ export default function Settings() {
                     </button>
                 </div>
             </div>
-
+{/* 
             <div className="border-1 border-white 
             ">
                 <h1 className="settings-label"
@@ -51,7 +51,7 @@ export default function Settings() {
                             }} >Dark
                     </button>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
