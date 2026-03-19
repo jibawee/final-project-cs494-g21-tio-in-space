@@ -19,59 +19,105 @@ export default function Asteroid() {
     }
     
     return (
-        <div>
-            <button onClick={(e) => {
-                let watchlist = JSON.parse(window.localStorage.getItem("watchlist") ?? "[]")
-                if (watchlist.includes(neoData.id)) {
-                    watchlist = watchlist.filter(id => id !== neoData.id)
-                } else {
-                    watchlist.push(neoData.id)
+        <div className="mx-10 justify-items-center">
+            <button 
+                className="
+                    border-2 border-white text-xl py-2
+                    min-w-1/5
+                    my-4
+                    hover:bg-gray-800 hover:cursor-pointer
+                    flex justify-center
+                "
+                onClick={(e) => {
+                    let watchlist = JSON.parse(window.localStorage.getItem("watchlist") ?? "[]")
+                    if (watchlist.includes(neoData.id)) {
+                        watchlist = watchlist.filter(id => id !== neoData.id)
+                    } else {
+                        watchlist.push(neoData.id)
+                    }
+                    window.localStorage.setItem("watchlist", JSON.stringify(watchlist))
+                    setOnWatchlist(w => !w)
+                }}
+            >{onWatchlist ? <div className="text-red-500">Remove from watchlist</div> : "Add to watchlist"}</button>
+
+            <div className="flex flex-col gap-5">
+                <div>
+                    <span className="asteroid-identity">
+                        {`Asteroid Name: `}
+                    </span>
+                    <span className="asteroid-value">{
+                        (neoData.name[0] == "(") ? neoData.name.substring(1,neoData.name.length-1) : neoData.name
+                    }</span>
+                </div>
+
+                {neoData.is_potentially_hazardous_asteroid ? 
+                    <span className="text-xl text-red-500">Hazardous</span> : 
+                    <span className="text-xl text-green-500">Not Hazardous</span>
                 }
-                window.localStorage.setItem("watchlist", JSON.stringify(watchlist))
-                setOnWatchlist(w => !w)
-            }}>{onWatchlist ? "Remove from watchlist" : "Add to watchlist"}</button>
-            Asteroid
-            <p>
-                Name: {
-                    (neoData.name[0] == "(") ? neoData.name.substring(1,neoData.name.length-1) : neoData.name
-                }
-            </p>
 
-            <p>
-                {neoData.is_potentially_hazardous_asteroid ? "Hazardous" : "Not Hazardous"}
-            </p>
 
-            <p>
-                Diameter: {neoData.estimated_diameter[inMetric ? "meters" : "feet"].estimated_diameter_min.toFixed(2) + " - " + neoData.estimated_diameter[inMetric ? "meters" : "feet"].estimated_diameter_max.toFixed(2) + (inMetric ? "m" : "ft")}
-            </p>
+                {/*I want a break here */}
 
-            <br></br>
+                <div>
+                    <span className="asteroid-identity">
+                        {`Orbit Class: `}
+                    </span>
+                    <span className="asteroid-value">
+                        {neoData.orbital_data.orbit_class.orbit_class_description}
+                    </span>
+                </div>
 
-            <p>
-                Orbit Class: {neoData.orbital_data.orbit_class.orbit_class_description}
-            </p>
+                <div>
+                    <span className="asteroid-identity">
+                        {`Orbital Period: `}
+                    </span>
+                    
+                    <span className="asteroid-value">
+                        {Number(neoData.orbital_data.orbital_period).toFixed(2) + " days"}
+                    </span>
+                </div>
 
-            <p>
-                Orbital Period: {Number(neoData.orbital_data.orbital_period).toFixed(2) + " days"}
-            </p>
+                <div>
+                    <span className="asteroid-identity">
+                        {`Orbit Perihelion: `}
+                    </span>
+                    <span className="asteroid-value">
+                        {convertAu(Number(neoData.orbital_data.perihelion_distance)).toFixed(2) + (inMetric ? "km" : " miles")}
+                    </span>
+                </div>
 
-            <p>
-                Orbit Perihelion: {convertAu(Number(neoData.orbital_data.perihelion_distance)).toFixed(2) + (inMetric ? "km" : " miles")}
-            </p>
+                <div>
+                    <span className="asteroid-identity">
+                        {`Orbit Aphelion: `}
+                    </span>
+                    <span className="asteroid-value">
+                        {convertAu(Number(neoData.orbital_data.aphelion_distance)).toFixed(2) + (inMetric ? "km" : " miles")}
+                    </span>
+                </div>
 
-            <p>
-                Orbit Aphelion: {convertAu(Number(neoData.orbital_data.aphelion_distance)).toFixed(2) + (inMetric ? "km" : " miles")}
-            </p>
+                {/*I want a break here */}
 
-            <br></br>
+                <div>
+                    <span className="asteroid-identity">
+                        {`First Observed: `}
+                    </span>
 
-            <p>
-                First Observed: {neoData.orbital_data.first_observation_date}
-            </p>
+                    <span className="asteroid-value">
+                        {neoData.orbital_data.first_observation_date}
+                    </span>
+                    
+                </div>
 
-            <p>
-                Last Observed: {neoData.orbital_data.last_observation_date}
-            </p>
+                <div>
+                    <span className="asteroid-identity">
+                        {`Last Observed: `}
+                    </span>
+                    <span className="asteroid-value">
+                        {neoData.orbital_data.last_observation_date}
+                    </span>
+                </div>
+
+            </div>
             
         </div>
     )

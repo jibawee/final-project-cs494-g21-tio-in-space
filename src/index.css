@@ -24,3 +24,16 @@
     py-2
     border-b-1 border-white
 }
+
+.asteroid-identity {
+    @apply
+    inline
+    text-lg
+}
+
+.asteroid-value {
+    @apply
+    inline
+    font-bold text-gray-200
+    text-xl
+}

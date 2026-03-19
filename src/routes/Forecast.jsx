@@ -65,7 +65,7 @@ export default function Forecast() {
                 <div className="mb-2">
                     <h1 className="text-3xl font-bold m-4 text-center">Forecast</h1>
                     <div className="flex items-center justify-center mb-4 text-xl">
-                        <input className="font-bold" type="date" value={start} onChange={(e) => navigate(`/forecast/${e.target.value}`)} />
+                        <input className="font-bold bg-gray-700 rounded-lg py-2 px-1 mx-1" type="date" value={start} onChange={(e) => navigate(`/forecast/${e.target.value}`)} />
                         <p>{`to ${end.toLocaleDateString()}`}</p>
                     </div>
                 </div>
@@ -76,7 +76,12 @@ export default function Forecast() {
                             {neoData && Object.entries(neoData)
                             .sort(([a], [b]) => a.localeCompare(b))
                             .map(([date, asteroids]) => (
-                                <details key={date} className="mb-2 open:overflow-y-auto border-2 border-white open:max-h-100">
+                                <details key={date} className="
+                                    mb-2 
+                                    p-1 rounded-sm
+                                    open:overflow-y-auto open:max-h-100
+                                    border-2 border-white
+                                ">
                                 <summary className="text-lg cursor-pointer sticky top-0 bg-black">{date}</summary>
                                 {asteroids.map(asteroid => (
                                     <AsteroidItem key={asteroid.id} asteroid={asteroid} />
