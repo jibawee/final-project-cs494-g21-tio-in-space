@@ -7,3 +7,10 @@
     --font-ScienceGothic: Science Gothic, "sans-serif";
     --default-font-family: var(--font-ScienceGothic);
 }
+
+.settings-btn {
+    @apply 
+    border-white border-1 
+    p-4 my-4 
+    hover:bg-gray-800 hover:cursor-pointer
+}
