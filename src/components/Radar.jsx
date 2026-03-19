@@ -1,6 +1,8 @@
 import { Renderer, Program, Mesh, Triangle } from 'ogl';
 import { useEffect, useRef } from 'react';
 
+//radar animation from https://reactbits.dev/backgrounds/particles by https://x.com/davidhdev
+
 function hexToVec3(hex) {
   const h = hex.replace('#', '');
   return [

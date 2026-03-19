@@ -68,10 +68,8 @@ export default function Watchlist() {
                 />
                 </div>
             
-         <div className=" relative z-30">
-            Watchlist
-
-
+         <div className=" relative z-30 p-4">
+            <h1 className="text-3xl text-center pb-2">My Watchlist</h1>
                 <ul className="">
                     {neoData && neoData.map(asteroid => (
                         <AsteroidItem key={asteroid.id} asteroid={asteroid}/>
