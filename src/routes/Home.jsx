@@ -68,11 +68,11 @@ export default function Home() {
             <h1 className="text-2xl font-bold mt-8">Nearest Today</h1>
             <div>
             <img src="../src/icons/asteroid_flying.png" className="w-26 h-26 mx-auto block mb-4 mt-4" />
-            <p className="text-2xl font-bold mb-6">{neoData?.[0]?.name}</p>
+            <p className="text-2xl font-bold mb-6">{neoData && neoData[0].name}</p>
             </div>
             <div>
             <p>Distance:</p>
-            <p className="text-2xl">{neoData?.[0]?.distance}</p>
+            <p className="text-2xl">{neoData && neoData[0].distance}</p>
             <p>{neoData?.[0]?.distanceUnit} away</p>
             </div>
         </div>
@@ -85,7 +85,7 @@ export default function Home() {
         </div>
 
         <ul className="overflow-y-auto flex-1">
-            {neoData?.map(asteroid => (
+            {neoData && neoData.map(asteroid => (
             <AsteroidItem key={asteroid.id} asteroid={asteroid} />
             ))}
         </ul>
