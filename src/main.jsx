@@ -35,14 +35,12 @@ const router = createBrowserRouter([
             },
             { 
               path: "forecast",
+              loader: forecastLoader  
+            },
+            { 
+              path: "forecast/:start",
               Component: Forecast,
-              loader: forecastLoader,
-              children: [
-                {
-                  path: ":start",
-                  Component: Forecast,
-                }
-              ]
+              loader: forecastLoader
             },
             { 
               path: "watchlist",

@@ -23,7 +23,7 @@ export default function Root() {
                 <ul className="flex items-center justify-between px-3 py-5 text-3xl">
                     
                     <li>
-                        <NavLink to="/" className="flex items-center gap-2 text-white">
+                        <NavLink to='/' className="flex items-center gap-2 text-white">
                             <img src="../src/icons/asteroid_icon.png" className="w-10 h-10" />
                             Asteroids Ahoy
                         </NavLink>
@@ -31,19 +31,19 @@ export default function Root() {
 
                     <div className="flex items-center gap-6">
                         <li>
-                            <NavLink to="/watchlist" className="flex items-center">
+                            <NavLink to='/watchlist' className="flex items-center">
                                 <img src="../src/icons/watchlist_icon.png" className="w-10 h-10" />
                             </NavLink>
                         </li>
 
                         <li>
-                            <NavLink to="/forecast" className="flex items-center">
+                            <NavLink to='/forecast' className="flex items-center">
                                 <img src="../src/icons/forecast_icon.png" className="w-10 h-10" />
                             </NavLink>
                         </li>
 
                         <li>
-                            <NavLink to="/settings" className="flex items-center">
+                            <NavLink to='/settings' className="flex items-center">
                                 <img src="../src/icons/settings_icon.png" className="w-10 h-10" />
                             </NavLink>
                         </li>
