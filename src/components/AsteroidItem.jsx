@@ -34,7 +34,7 @@ export default function AsteroidItem({ asteroid }) {
             pr-4
             text-right
             ">
-                Dist: {asteroid.distance.toLocaleString()}{asteroid.distanceUnit}
+                Dist: {asteroid.distance.toLocaleString('en-US', {maximumFractionDigits: 2})}{asteroid.distanceUnit}
             </p>
 
 

@@ -30,7 +30,7 @@ export default function Home() {
                 id: a.id,
                 name: aName,
                 isHazardous: a.is_potentially_hazardous_asteroid,
-                distance: Number(inMetric ? closeData.miss_distance.kilometers : closeData.miss_distance.miles).toLocaleString('en-US', {maximumFractionDigits: 2}), // to use unit setting
+                distance: Number(inMetric ? closeData.miss_distance.kilometers : closeData.miss_distance.miles), // to use unit setting
                 distanceUnit: inMetric ? "km" : " miles",
                 speed: Number(inMetric ? closeData.relative_velocity.kilometers_per_hour : closeData.relative_velocity.miles_per_hour).toFixed(2),
                 speedUnit: inMetric ? "kph" : "mph",
@@ -39,9 +39,10 @@ export default function Home() {
             })
         })
         neoData.sort((a, b) => a.distance - b.distance)
+        console.log(neoData)
     }
 
-        return (
+    return (
     <div className="flex flex-wrap gap-4 p-4">
 
         <div className="flex flex-col gap-4 min-w-64 flex-1">
@@ -72,7 +73,7 @@ export default function Home() {
             </div>
             <div>
             <p>Distance:</p>
-            <p className="text-2xl">{neoData && neoData[0].distance}</p>
+            <p className="text-2xl">{neoData && neoData[0].distance.toLocaleString('en-US', {maximumFractionDigits: 2})}</p>
             <p>{neoData?.[0]?.distanceUnit} away</p>
             </div>
         </div>
