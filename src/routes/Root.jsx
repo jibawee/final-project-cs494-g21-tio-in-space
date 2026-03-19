@@ -19,12 +19,12 @@ export default function Root() {
                 />
             </div>
 
-            <nav className="relative z-10 w-full bg-black bg-opacity-80 border-b border-white">
-                <ul className="flex items-center justify-between px-3 py-3 text-2xl">
+            <nav className="relative z-10 w-full bg-black bg-opacity-80 border-b-2 border-white">
+                <ul className="flex items-center justify-between px-3 py-5 text-3xl">
                     
                     <li>
                         <NavLink to="/" className="flex items-center gap-2 text-white">
-                            <img src="../src/icons/asteroid_icon.png" className="w-6 h-6" />
+                            <img src="../src/icons/asteroid_icon.png" className="w-10 h-10" />
                             Asteroids Ahoy
                         </NavLink>
                     </li>
@@ -32,19 +32,19 @@ export default function Root() {
                     <div className="flex items-center gap-6">
                         <li>
                             <NavLink to="/watchlist" className="flex items-center">
-                                <img src="../src/icons/watchlist_icon.png" className="w-6 h-6" />
+                                <img src="../src/icons/watchlist_icon.png" className="w-10 h-10" />
                             </NavLink>
                         </li>
 
                         <li>
                             <NavLink to="/forecast" className="flex items-center">
-                                <img src="../src/icons/forecast_icon.png" className="w-6 h-6" />
+                                <img src="../src/icons/forecast_icon.png" className="w-10 h-10" />
                             </NavLink>
                         </li>
 
                         <li>
                             <NavLink to="/settings" className="flex items-center">
-                                <img src="../src/icons/settings_icon.png" className="w-6 h-6" />
+                                <img src="../src/icons/settings_icon.png" className="w-10 h-10" />
                             </NavLink>
                         </li>
                     </div>

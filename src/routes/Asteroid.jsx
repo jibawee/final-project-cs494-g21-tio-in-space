@@ -22,7 +22,9 @@ export default function Asteroid() {
         <div>
             <button onClick={(e) => {
                 let watchlist = JSON.parse(window.localStorage.getItem("watchlist") ?? "[]")
-                if (!watchlist.includes(neoData.id)) {
+                if (watchlist.includes(neoData.id)) {
+                    watchlist = watchlist.filter(id => id !== neoData.id)
+                } else {
                     watchlist.push(neoData.id)
                 }
                 window.localStorage.setItem("watchlist", JSON.stringify(watchlist))
