@@ -6,7 +6,7 @@ import { RouterProvider } from 'react-router/dom'
 import Root from './routes/Root'
 import Home, { homeLoader } from './routes/Home'
 import Asteroid, { asteroidLoader } from './routes/Asteroid'
-import Forecast from './routes/Forecast'
+import Forecast, { forecastLoader } from './routes/Forecast'
 import Watchlist from './routes/Watchlist'
 import Settings from './routes/Settings'
 
@@ -29,13 +29,19 @@ const router = createBrowserRouter([
               children: [
                 {
                   path: ":id",
-                  Component: Asteroid
                 }
               ]
             },
             { 
               path: "forecast",
-              Component: Forecast
+              Component: Forecast,
+              loader: forecastLoader,
+              children: [
+                {
+                  path: ":start",
+                  Component: Forecast,
+                }
+              ]
             },
             { 
               path: "watchlist",
