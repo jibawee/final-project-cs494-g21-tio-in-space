@@ -7,7 +7,7 @@ import Root from './routes/Root'
 import Home, { homeLoader } from './routes/Home'
 import Asteroid, { asteroidLoader } from './routes/Asteroid'
 import Forecast, { forecastLoader } from './routes/Forecast'
-import Watchlist from './routes/Watchlist'
+import Watchlist, { watchlistLoader } from './routes/Watchlist'
 import Settings from './routes/Settings'
 
 import './index.css'
@@ -29,6 +29,7 @@ const router = createBrowserRouter([
               children: [
                 {
                   path: ":id",
+                  Component: Asteroid
                 }
               ]
             },
@@ -45,7 +46,8 @@ const router = createBrowserRouter([
             },
             { 
               path: "watchlist",
-              Component: Watchlist
+              Component: Watchlist,
+              loader: watchlistLoader
             },
             { 
               path: "settings",

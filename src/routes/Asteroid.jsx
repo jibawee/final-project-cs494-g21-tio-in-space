@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router";
 
 export function asteroidLoader({ params, request }) {
@@ -9,6 +10,9 @@ export default function Asteroid() {
     const neoData = useLoaderData()
     let units = window.localStorage.getItem("units") ?? "metric"
     let inMetric = units == "metric"
+    const [ onWatchlist, setOnWatchlist ] = useState(JSON.parse(window.localStorage.getItem("watchlist") ?? "[]").includes(neoData.id))
+
+    console.log(JSON.parse(window.localStorage.getItem("watchlist") ?? "[]"))
 
     function convertAu(au) {
         return inMetric ? au * 149597870.7 : au * 92955807.273026
@@ -16,6 +20,14 @@ export default function Asteroid() {
     
     return (
         <div>
+            <button onClick={(e) => {
+                let watchlist = JSON.parse(window.localStorage.getItem("watchlist") ?? "[]")
+                if (!watchlist.includes(neoData.id)) {
+                    watchlist.push(neoData.id)
+                }
+                window.localStorage.setItem("watchlist", JSON.stringify(watchlist))
+                setOnWatchlist(w => !w)
+            }}>{onWatchlist ? "Remove from watchlist" : "Add to watchlist"}</button>
             Asteroid
             <p>
                 Name: {
