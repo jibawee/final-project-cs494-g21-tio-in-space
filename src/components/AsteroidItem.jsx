@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import hazardIcon from "../src/icons/hazard_icon.png";
+import hazardIcon from "../icons/hazard_icon.png";
 
 export default function AsteroidItem({ asteroid }) {
     // asteroid is retrieved from neoData.map() in Home.jsx
