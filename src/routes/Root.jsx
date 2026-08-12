@@ -1,5 +1,10 @@
 import { NavLink, Outlet } from 'react-router'
 import Particles from '../components/Particles'
+import asteroidIcon from "../icons/asteroid_icon.png";
+import watchlistIcon from "../icons/watchlist_icon.png";
+import forecastIcon from "../icons/forecast_icon.png";
+import settingsIcon from "../icons/settings_icon.png";
+
 
 
 export default function Root() {
@@ -24,7 +29,7 @@ export default function Root() {
                     
                     <li>
                         <NavLink to='/' className="flex items-center gap-2 text-white">
-                            <img src="../src/icons/asteroid_icon.png" className="w-10 h-10" />
+                            <img src= {asteroidIcon} className="w-10 h-10" />
                             Asteroids Ahoy
                         </NavLink>
                     </li>
@@ -32,19 +37,19 @@ export default function Root() {
                     <div className="flex items-center gap-6">
                         <li>
                             <NavLink to='/watchlist' className="flex items-center">
-                                <img src="../src/icons/watchlist_icon.png" className="w-10 h-10" />
+                                <img src= {watchlistIcon} className="w-10 h-10" />
                             </NavLink>
                         </li>
 
                         <li>
                             <NavLink to='/forecast' className="flex items-center">
-                                <img src="../src/icons/forecast_icon.png" className="w-10 h-10" />
+                                <img src= {forecastIcon} className="w-10 h-10" />
                             </NavLink>
                         </li>
 
                         <li>
                             <NavLink to='/settings' className="flex items-center">
-                                <img src="../src/icons/settings_icon.png" className="w-10 h-10" />
+                                <img src={settingsIcon} className="w-10 h-10" />
                             </NavLink>
                         </li>
                     </div>

@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router"
 import CountUp from '../components/CountUp'
+import asteroidFlying from "../icons/asteroid_flying.png";
 
 import AsteroidItem from "../components/AsteroidItem"
 
@@ -68,7 +69,7 @@ export default function Home() {
         <div className="border-2 border-white p-4 flex flex-col gap-4 text-center flex-1 items-center">
             <h1 className="text-2xl font-bold mt-8">Nearest Today</h1>
             <div>
-            <img src="../src/icons/asteroid_flying.png" className="w-26 h-26 mx-auto block mb-4 mt-4" />
+            <img src={asteroidFlying} className="w-26 h-26 mx-auto block mb-4 mt-4" />
             <p className="text-2xl font-bold mb-6">{neoData && neoData[0].name}</p>
             </div>
             <div>

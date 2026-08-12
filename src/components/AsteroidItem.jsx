@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router";
+import hazardIcon from "../src/icons/hazard_icon.png";
 
 export default function AsteroidItem({ asteroid }) {
     // asteroid is retrieved from neoData.map() in Home.jsx
@@ -41,7 +42,7 @@ export default function AsteroidItem({ asteroid }) {
             {!asteroid.isHazardous ? (
                 <div className="w-6 h-6" />  // placeholder keeps distance in same spot
             ) : (
-                <img className="w-6 h-6" src="../src/icons/hazard_icon.png" />
+                <img className="w-6 h-6" src={hazardIcon} />
             )}
 
         </div>
